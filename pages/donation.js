@@ -217,13 +217,13 @@ export default function Donation(users) {
       )
     }, []);
 
-    const [type, setType] = React.useState('new');
+    // const [type, setType] = React.useState('new');
 
-      const filteredData = React.useMemo(() => {
-        return data1.filter((row) => {
-          return row.type === type
-        })
-      }, [type])  
+    //   const filteredData = React.useMemo(() => {
+    //     return data1.filter((row) => {
+    //       return row.type === type
+    //     })
+    //   }, [type])  
 
       // const DataforGrid = [
       //   {
