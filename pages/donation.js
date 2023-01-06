@@ -169,7 +169,7 @@ export default function Donation(users) {
       data1.push(users.users[i]);
     }
   
-    
+    console.log(data1);
 
     let onNextpage = (_id) => {
       ref.current.continuousStart();

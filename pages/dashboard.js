@@ -7,23 +7,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from "react";
 import { Page, PageBody } from '@saas-ui/pro';
-import { AuthContext } from "../src/context/auth-context";
 import { Box, Menu, MenuList, MenuButton, MenuItem, Container, Spacer, IconButton, Card, CardBody, SimpleGrid, HStack } from '@chakra-ui/react';
 import { Stat, StatLabel, StatNumber, StatHelpText } from "@chakra-ui/react";
 import { Sidebar, SidebarSection, SidebarToggleButton, NavItem} from '@saas-ui/sidebar';
-import { useRouter } from 'next/router';
-// import { ProtectRoute } from "../src/context/auth-context";
+
 
 export default function Dashboard() {
-      // const router = useRouter();
-    //   const authContext = React.useContext(AuthContext);
-
-    // React.useEffect(() => {
-    //   // checks if the user is authenticated
-    //   authContext.isUserAuthenticated()
-    //   ? router.push("/dashboard")
-    //   : router.push("/");
-    //   }, []);
+     
 
     return(
       
