@@ -50,7 +50,7 @@ export default function UpdateDonation() {
 
      
       
-  },[]);
+  },[query1]);
 
  
   const donorname = data1.Donor;
