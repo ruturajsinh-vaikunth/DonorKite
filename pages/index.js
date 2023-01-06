@@ -1,32 +1,14 @@
 import styles from '../styles/Home.module.css';
 import { React, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Stack } from '@chakra-ui/react';
-import { Container } from '@chakra-ui/react';
-import { AuthProvider } from '@saas-ui/react';
-import {
-  Auth,
-  AuthForm,
-  MagicLinkForm,
-  PasswordForm,
-  ForgotPasswordForm,
-  UpdatePasswordForm,
-  OtpForm,
-  Providers,
-} from '@saas-ui/react'
+import { Container, Stack } from '@chakra-ui/react'
+import Image from 'next/image'
+import { Auth, AuthProvider} from '@saas-ui/react';
+// import { Loader, useAuth } from '@saas-ui/react'
 import * as Yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  Card,
-  CardBody,
-  Form,
-  Field,
-  SubmitButton,
-  useAuth 
-} from '@saas-ui/react';
 
 export default function Home() {
-  const [errorMsg, setErrorMsg] = useState("");
   const router = useRouter();
   const schema = Yup.object({
     email: Yup.string()
@@ -35,6 +17,11 @@ export default function Home() {
       .label('Email'),
     password: Yup.string().min(4).required().label('Password'),
   });
+  // const { isAuthenticated } = useAuth()
+
+  // if (isAuthenticated) {
+  //   return <Loader />
+  // }
 
   const authProvider = {
     
@@ -76,35 +63,35 @@ export default function Home() {
       }
     },
   }
-
-//   let handleSubmit = async (params) => {
-//     let res = await fetch("/api/users1", {
-//       method: "POST",
-//       body: JSON.stringify({
-//         email: params.email,
-//         password: params.password
-//       }),
-//     });
-//     if (res.status === 200) {
-//        res = await res.json();
-//        router.push({
-//         pathname: '/dashboard',
-//        })
-//     } 
-//     else {
-//       setErrorMsg("Incorrect username or password. Try again!");
-//     }
-// };
   return (
     <>
-        <AuthProvider {...authProvider}>
+        {/* <AuthProvider {...authProvider}>
           <Container mt="100px" width="md">
             <Stack  maxWidth="md" >
               <Auth type="password" resolver={yupResolver(schema)}/>
             </Stack>
           </Container>
-      </AuthProvider>
-      
+      </AuthProvider> */}
+      <Stack flex="1" direction="row">
+        
+      <Stack
+        flex="1"
+        alignItems="center"
+        justify="center"
+        direction="column"
+        spacing="8"
+      >
+        
+        <AuthProvider {...authProvider}>
+        <Container mt="100px" >
+          <div style={{ display: "flex", justifyContent: "center"}}>
+          <Image src="/images/logo.png" height={52} width={200} alt="" />
+          </div>
+          <Auth type="password" resolver={yupResolver(schema)}/>
+        </Container>
+        </AuthProvider>
+      </Stack>
+    </Stack>
     </>
   )
 }
