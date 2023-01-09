@@ -101,8 +101,7 @@ export default function Donation(users) {
       },
     ];
 
-    const columns  = React.useMemo(() => { 
-      return [
+    const columns  = [
           {
             id: 'Donor',
             accessor: 'Donor',
@@ -163,10 +162,7 @@ export default function Donation(users) {
             ),
             
           },
-    ]
-  }, [])
-
-  
+    ];
     const data1 = [];
     let length1 = (users.users).length;
     for(let i=0; i< length1;i++){
