@@ -106,31 +106,42 @@ export default function Donation(users) {
     const columns = [
           {
             id: 'Donor',
+            accessor: 'Donor',
             Header: 'Donor',
+            filterFn: useDataGridFilter('string'),
             size: 90,
            
           },
           {
             id: 'Amount',
+            accessor: 'Amount',
             Header: 'Amount',
+            filterFn: useDataGridFilter('string'),
             size: 70,
+            isNumeric: true,
           },
           {
             id: 'Type',
+            accessor: 'Type',
             Header: 'Type',
+            filterFn: useDataGridFilter('string'),
             size: 90,
            
           },
           {
             id: 'Fund',
+            accessor: 'Fund',
             Header: 'Fund',
+            filterFn: useDataGridFilter('string'),
             size: 90,
             
           },
           {
             id: 'Date',
+            accessor: 'Date',
             Header: 'Date',
             size: 90,
+            filterFn: useDataGridFilter('date'),
             meta: {
               href: ({ _id }) => `#donation/${_id}`,
              },
@@ -138,6 +149,7 @@ export default function Donation(users) {
           },
           {
             id: 'Actions',
+            accessor: 'Actions',
             Header: 'Actions',
             enableGlobalFilter: false,
             cell: (_id) => (
