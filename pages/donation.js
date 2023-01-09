@@ -13,9 +13,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Sidebar, SidebarSection, SidebarToggleButton, NavItem} from '@saas-ui/sidebar';
-import { OverflowMenu } from '@saas-ui/react';
+import { DataTable, OverflowMenu } from '@saas-ui/react';
 import { Page, PageBody, useDataGridFilter, FiltersProvider, FiltersAddButton, ActiveFiltersList, Toolbar, DataGrid, DataGridPagination } from "@saas-ui/pro";
 import LoadingBar from "react-top-loading-bar";
+
 
 export default function Donation(users) {
   const router = useRouter();
@@ -25,6 +26,7 @@ export default function Donation(users) {
   const [donationid, setId] = useState("");
   const [Searchvalue, setSearchvalue] = React.useState('');
   const [SearchResultShow, setSearchResultShow] = React.useState(false);
+
 
   let setSearchvalue1 = async () => {
     let res = await fetch("http://localhost:3000/api/search", {
@@ -101,45 +103,34 @@ export default function Donation(users) {
       },
     ];
 
-    const columns  = [
+    const columns = [
           {
             id: 'Donor',
-            accessor: 'Donor',
             Header: 'Donor',
-            filterFn: useDataGridFilter('string'),
             size: 90,
            
           },
           {
             id: 'Amount',
-            accessor: 'Amount',
             Header: 'Amount',
-            filterFn: useDataGridFilter('string'),
             size: 70,
-           
           },
           {
             id: 'Type',
-            accessor: 'Type',
             Header: 'Type',
-            filterFn: useDataGridFilter('string'),
             size: 90,
            
           },
           {
             id: 'Fund',
-            accessor: 'Fund',
             Header: 'Fund',
-            filterFn: useDataGridFilter('string'),
             size: 90,
             
           },
           {
             id: 'Date',
-            accessor: 'Date',
             Header: 'Date',
             size: 90,
-            filterFn: useDataGridFilter('date'),
             meta: {
               href: ({ _id }) => `#donation/${_id}`,
              },
@@ -147,7 +138,6 @@ export default function Donation(users) {
           },
           {
             id: 'Actions',
-            accessor: 'Actions',
             Header: 'Actions',
             enableGlobalFilter: false,
             cell: (_id) => (
@@ -308,8 +298,7 @@ export default function Donation(users) {
                         <ActiveFiltersList />
                           <Box position="sticky" >
                       
-                                <DataGrid 
-                                  styleConfig={{ color : '#2563eb' }}
+                                <DataGrid
                                   instanceRef={gridRef}
                                   columns={columns}
                                   data={data1}
