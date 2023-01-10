@@ -172,7 +172,6 @@ let onNextpage = (_id) => {
       data1.push(users.users[i]);
   }
 
-  console.log(data1);
   
     return(
       <>
@@ -225,7 +224,7 @@ let onNextpage = (_id) => {
                 >
                   <PageBody fullWidth>
                     <ActiveFiltersList/>
-                  <Box position="sticky">
+                  <Box position="sticky" cursor={'pointer'}>
                   
                   <DataGrid
                     instanceRef={gridRef}

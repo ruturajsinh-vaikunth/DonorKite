@@ -43,12 +43,6 @@ export default function Donation(users) {
 
   useEffect(() => {
     ref.current.continuousStart();
-    // fetch('/api/donation',{
-    //   method: "GET",
-    // })
-    // .then((res) => res.json())
-    // .then((res) => setData(res));
-
 
     ref.current.complete();
     
@@ -133,7 +127,15 @@ export default function Donation(users) {
             accessor: 'Fund',
             Header: 'Fund',
             filterFn: useDataGridFilter('string'),
-            size: 90,
+            size: 100,
+            
+          },
+          {
+            id: 'Status1',
+            accessor: 'Status1',
+            Header: 'Status',
+            filterFn: useDataGridFilter('string'),
+            size: 80,
             
           },
           {
@@ -171,9 +173,7 @@ export default function Donation(users) {
       data1.push(users.users[i]);
     }
 
-    console.log(data1);
-  
-   
+
 
     let onNextpage = (_id) => {
       ref.current.continuousStart();
@@ -220,37 +220,6 @@ export default function Donation(users) {
         }) 
       )
     }, []);
-
-    // const [type, setType] = React.useState('new');
-
-    //   const filteredData = React.useMemo(() => {
-    //     return data1.filter((row) => {
-    //       return row.type === type
-    //     })
-    //   }, [type])  
-
-      // const DataforGrid = [
-      //   {
-          
-      //     Donor: "Zecob",
-      //     Amount: "123",
-      //     Type: "Cash",
-      //     Fund: "General Fund",
-      //     Status1:"Paid",
-      //     Date:"2022-12-13"
-      //   },
-      //   {
-          
-      //     Donor: "Zecob",
-      //     Amount: "123",
-      //     Type: "Cash",
-      //     Fund: "General Fund",
-      //     Status1:"Paid",
-      //     Date:"2022-12-13"
-      //   },
-        
-      // ]
-      
 
     return(
       <>
