@@ -13,8 +13,6 @@ import { Sidebar, SidebarSection, SidebarToggleButton, NavItem} from '@saas-ui/s
 
 
 export default function Dashboard() {
-     
-
     return(
       
       <HStack height="100vh" width="100vw" justifyItems="stretch" alignItems="stretch">

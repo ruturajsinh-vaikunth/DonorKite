@@ -308,7 +308,7 @@ export default function Donation(users) {
                      
                       <PageBody fullWidth>
                         <ActiveFiltersList />
-                          <Box position="sticky" >
+                          <Box position="sticky" cursor={'pointer'}>
                       
                                 <DataGrid
                                   instanceRef={gridRef}
@@ -321,7 +321,7 @@ export default function Donation(users) {
                                   initialState={{
                                     pagination: {
                                       pageSize: 20,
-                                    }
+                                    },
                                   }}
                                 >
                                   <DataGridPagination />
