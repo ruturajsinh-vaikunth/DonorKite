@@ -47,10 +47,8 @@ export default function UpdateDonation() {
       .then((res) => res.json())
       .then((res) => setData(res[0]))
       .then((res) => isLoading(false));
-
-     
       
-  },[query1]);
+  },[]);
 
  
   const donorname = data1.Donor;
@@ -167,74 +165,85 @@ export default function UpdateDonation() {
                     }
                   >
                     <PageBody >
-                    <HStack alignItems="stretch" height="100%" overflowX="hidden" spacing="56" onClick={donordetails} >
-                    <Box position="sticky" width="auto" mt={"5"}  onClick={donordetails}>
-                        <Heading size={"md"} onClick={donordetails}>Edit Donation Details</Heading>
-                        <Text mt={"3"} mb={"4"} color="Muted" onClick={donordetails} >Fill Up The Form Below</Text>
-                        <Divider orientation="horizontal"  mb={"4"} maxW="620px" />
-                       
-                        <Card isHoverable variant="outline" maxW="700px"  onClick={donordetails}>
-                            <CardBody>
-                            {/* resolver={yupResolver(schema)} */}
-                                <Form onSubmit={handleSubmit}>
-                                    <FormLayout>
-                                        <FormLayout columns={[1, null, 2]}>
-                                            <Field name="donor" label="Donor Name" type="text" defaultValue={data1.Donor} required />
-                                            <Field name="amount" label="Amount" type="text" defaultValue={data1.Amount}  required/>
-                                        </FormLayout>
-                                        <FormLayout columns={[1, null, 2]}>
-                                            <Field name="date" label="Date" type="date" defaultValue={data1.Date}   />
-                                            <Field name="type" label="Type" type="select" defaultValue={data1.Type}  required
-                                            options={[ 
-                                                { value: 'Cash' },
-                                                { value: 'CreditCard' },
-                                                { value: 'Payoneer' },
-                                                ]}/>
-                                        </FormLayout>
-                                        <FormLayout columns={[1, null, 2]}>
-                                            <Field name="fund" label="Fund" type="select"  defaultValue={data1.Fund} required
-                                            options={[
-                                                { value: 'General Fund' },
-                                                { value: 'Covid Relif Fund' },
-                                                ]}/>
-                                            <Field name="status1" label="Status" type="select" defaultValue={data1.Status1} required
-                                            options={[
-                                                { value: 'Paid' },
-                                                { value: 'Unsettled' },
-                                                ]} />
-                                        </FormLayout>
-                                        <FormLayout columns={[1]}>
-                                        <Field name="remark" label="Remark" type="text" />
-                                        </FormLayout>
-                                        <FormLayout columns={[1,2,3,4]} spacing="-10">
-                                          <SubmitButton>Save</SubmitButton>
-                                          <Button colorScheme={"red"} onClick={donationDelete} >Delete</Button>
-                                        </FormLayout>
-                                    </FormLayout>
-                                </Form>
-                            </CardBody>
-                        </Card>
+                      
+                        <HStack alignItems="stretch" height="100%" overflowX="hidden" spacing="56" >
                         
-                    </Box>
-                    <Box>
-                    <PageSidebar
-                        defaultWidth={280}
-                        minWidth="300px"
-                        maxWidth="400px"
-                        minHeight={'100%'}
-                        borderLeftWidth="1px"
-                        isOpen
-                        isResizable
-                      >
-                        <PageSidebarHeader defaultWidth={400}
-                        minWidth="400px"
-                        maxWidth="400px">
-                        <Persona name={"Donor Details"} size="xs"  />
-                        </PageSidebarHeader>
-                        <PageSidebarBody>{content}</PageSidebarBody>
-                      </PageSidebar>
-                      </Box>
-                    </HStack>
+                        <Box position="sticky" width="auto" mt={"5"}  onClick={donordetails}>
+                            <Heading size={"md"} onClick={donordetails}>Edit Donation Details</Heading>
+                            <Text mt={"3"} mb={"4"} color="Muted" onClick={donordetails} >Fill Up The Form Below</Text>
+                            <Divider orientation="horizontal"  mb={"4"} maxW="620px" />
+                          
+                            <Card isHoverable variant="outline" maxW="700px"  onClick={donordetails}>
+                                <CardBody>
+                                <div onMouseEnter={donordetails} >
+                                {/* resolver={yupResolver(schema)} */}
+                                    <Form onSubmit={handleSubmit}>
+                                        <FormLayout>
+                                            <FormLayout columns={[1, null, 2]}>
+                                                <Field name="donor" label="Donor Name" type="text" defaultValue={data1.Donor} required />
+                                                <Field name="amount" label="Amount" type="text" defaultValue={data1.Amount}  required/>
+                                            </FormLayout>
+                                            <FormLayout columns={[1, null, 2]}>
+                                                <Field name="date" label="Date" type="date" defaultValue={data1.Date}   />
+                                                <Field name="type" label="Type" type="select" defaultValue={data1.Type}  required
+                                                options={[ 
+                                                    { value: 'Cash' },
+                                                    { value: 'CreditCard' },
+                                                    { value: 'Payoneer' },
+                                                    ]}/>
+                                            </FormLayout>
+                                            <FormLayout columns={[1, null, 2]}>
+                                                <Field name="fund" label="Fund" type="select"  defaultValue={data1.Fund} required
+                                                options={[
+                                                    { value: 'General Fund' },
+                                                    { value: 'Covid Relif Fund' },
+                                                    ]}/>
+                                                <Field name="status1" label="Status" type="select" defaultValue={data1.Status1} required
+                                                options={[
+                                                    { value: 'Paid' },
+                                                    { value: 'Unsettled' },
+                                                    ]} />
+                                            </FormLayout>
+                                            <FormLayout columns={[1]}>
+                                            <Field name="remark" label="Remark" type="text" />
+                                            </FormLayout>
+                                            <FormLayout columns={[1,2,3,4]} spacing="-10">
+                                              <SubmitButton>Save</SubmitButton>
+                                              <Button colorScheme={"red"} onClick={donationDelete} >Delete</Button>
+                                            </FormLayout>
+                                        </FormLayout>
+                                    </Form>
+                                </div>
+                                </CardBody>
+                            </Card>
+                            
+                        </Box>
+                        
+                        
+                          <Box>
+                        <PageSidebar
+                            defaultWidth={280}
+                            minWidth="300px"
+                            maxWidth="400px"
+                            minHeight={'100%'}
+                            borderLeftWidth="1px"
+                            isOpen
+                            isResizable
+                          >
+                            <PageSidebarHeader defaultWidth={400}
+                            minWidth="400px"
+                            maxWidth="400px">
+                            <Persona name={"Donor Details"} size="xs"  />
+                            </PageSidebarHeader>
+                            <PageSidebarBody>
+                              <div onMouseEnter={donordetails} >
+                                {content}
+                              </div>
+                            </PageSidebarBody>
+                          </PageSidebar>
+                          </Box>
+                        
+                        </HStack>
                     </PageBody>
                     
                 </Page>
