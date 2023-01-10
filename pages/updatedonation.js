@@ -48,7 +48,7 @@ export default function UpdateDonation() {
       .then((res) => setData(res[0]))
       .then((res) => isLoading(false));
       
-  },[]);
+  },[query1]);
 
  
   const donorname = data1.Donor;
