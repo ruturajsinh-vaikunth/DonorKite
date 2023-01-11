@@ -168,14 +168,13 @@ export default function UpdateDonation() {
                       
                         <HStack alignItems="stretch" height="100%" overflowX="hidden" spacing="56" >
                         
-                        <Box position="sticky" width="auto" mt={"5"}  onClick={donordetails}>
-                            <Heading size={"md"} onClick={donordetails}>Edit Donation Details</Heading>
-                            <Text mt={"3"} mb={"4"} color="Muted" onClick={donordetails} >Fill Up The Form Below</Text>
+                        <Box position="sticky" width="auto" mt={"5"} >
+                            <Heading size={"md"}>Edit Donation Details</Heading>
+                            <Text mt={"3"} mb={"4"} color="Muted" >Fill Up The Form Below</Text>
                             <Divider orientation="horizontal"  mb={"4"} maxW="620px" />
                           
                             <Card isHoverable variant="outline" maxW="700px"  onClick={donordetails}>
                                 <CardBody>
-                                <div onMouseEnter={donordetails} >
                                 {/* resolver={yupResolver(schema)} */}
                                     <Form onSubmit={handleSubmit}>
                                         <FormLayout>
@@ -213,7 +212,6 @@ export default function UpdateDonation() {
                                             </FormLayout>
                                         </FormLayout>
                                     </Form>
-                                </div>
                                 </CardBody>
                             </Card>
                             
