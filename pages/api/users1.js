@@ -1,5 +1,6 @@
 import clientPromise from "../../lib/mongodb";
 import { compare } from 'bcryptjs';
+
 export default async function handler(req, res) {
   const client = await clientPromise;
   const db = client.db("nextjs-mongodb-demo");
@@ -21,4 +22,5 @@ export default async function handler(req, res) {
       res.json({ status: 200, data: posts });
       break;
   }
+
 }

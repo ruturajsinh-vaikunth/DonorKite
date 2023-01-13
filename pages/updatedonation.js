@@ -173,7 +173,7 @@ export default function UpdateDonation() {
                             <Text mt={"3"} mb={"4"} color="Muted" >Fill Up The Form Below</Text>
                             <Divider orientation="horizontal"  mb={"4"} maxW="620px" />
                           
-                            <Card isHoverable variant="outline" maxW="700px"  onClick={donordetails}>
+                            <Card isHoverable variant="outline" maxW="700px">
                                 <CardBody>
                                 {/* resolver={yupResolver(schema)} */}
                                     <Form onSubmit={handleSubmit}>

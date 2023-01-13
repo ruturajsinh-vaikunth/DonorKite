@@ -5,16 +5,43 @@ import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 import { AppShell } from '@saas-ui/app-shell';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { useRouter } from 'next/router';
 import { Page, PageBody } from '@saas-ui/pro';
 import { Box, Menu, MenuList, MenuButton, MenuItem, Container, Spacer, IconButton, Card, CardBody, SimpleGrid, HStack } from '@chakra-ui/react';
 import { Stat, StatLabel, StatNumber, StatHelpText } from "@chakra-ui/react";
 import { Sidebar, SidebarSection, SidebarToggleButton, NavItem} from '@saas-ui/sidebar';
 
+// import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
+// import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
+
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  // const { status } = useSession({
+  //   require: true,
+  //   onUnauthenticated(){
+  //     router.push('/');
+  //   },
+  // })
+  // if(status === "authenticated"){
+  //   return 'user not authenticated'
+  // }
+  useEffect(() => {
+    getSession().then((session) => {
+      if (session) {
+        router.replace('/');
+      } else {
+        setIsLoading(false);
+      }
+    });
+  }, [router]);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
     return(
-      
       <HStack height="100vh" width="100vw" justifyItems="stretch" alignItems="stretch">
           <AppShell variant="static" minH="100%"
             sidebar={
@@ -84,4 +111,18 @@ export default function Dashboard() {
       </AppShell>
     </HStack>
     )
+}
+export async function getServerSideProps(context){
+  const session = await getSession({ req: context.req });
+  if(session){
+    return{
+      redirect: {
+        destination: '/',
+        permanet: false,
+      },
+    };
+  }
+  return{
+    props: {session}
+  }
 }

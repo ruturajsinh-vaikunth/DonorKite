@@ -17,7 +17,6 @@ import { DataTable, OverflowMenu } from '@saas-ui/react';
 import { Page, PageBody, useDataGridFilter, FiltersProvider, FiltersAddButton, ActiveFiltersList, Toolbar, DataGrid, DataGridPagination } from "@saas-ui/pro";
 import LoadingBar from "react-top-loading-bar";
 
-
 export default function Donation(users) {
   const router = useRouter();
   const gridRef = useRef();

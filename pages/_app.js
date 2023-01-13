@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import { SessionProvider } from 'next-auth/react';
 import { AuthProvider } from '@saas-ui/react';
 import { extendTheme } from '@chakra-ui/react';
 import { theme as proTheme } from '@saas-ui/pro';
@@ -10,11 +11,13 @@ import "@fontsource/inter/variable.css";
 const theme =  extendTheme(proTheme, baseTheme);
 
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps }, }) {
   return (
     <SaasProvider theme={theme} >
       <AuthProvider>
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
       </AuthProvider>
     </SaasProvider>
   )
