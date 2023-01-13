@@ -7,11 +7,7 @@ import { Auth, AuthProvider} from '@saas-ui/react';
 // import { Loader, useAuth } from '@saas-ui/react'
 import * as Yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { BehaviorSubject } from 'rxjs';
-import { unstable_getServerSession } from 'next-auth/next';
-import { authOptions } from './api/auth/[...nextauth]';
 
-const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('user')));
 
 export default function Home() {
   const router = useRouter();
@@ -99,11 +95,4 @@ export default function Home() {
     </Stack>
     </>
   )
-}
-export async function getServerSideProps({req, res}){
-  return{
-    props: {
-      session: await unstable_getServerSession(req, res, authOptions)
-    }
-  }
 }
