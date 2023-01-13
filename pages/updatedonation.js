@@ -15,9 +15,9 @@ import { PageSidebar, PageSidebarHeader, PageSidebarBody} from '@saas-ui/pro';
 import { Form, FormLayout, SubmitButton, Field, Button, PropertyList, Property, Persona, Card, CardBody } from '@saas-ui/react';
 import { Sidebar, SidebarSection, SidebarToggleButton, NavItem} from '@saas-ui/sidebar';
 import { Page, PageBody, Toolbar } from '@saas-ui/pro';
+import clientPromise from "../lib/mongodb";
 
-
-export default function UpdateDonation() {
+export default function UpdateDonation(users) {
   const router = useRouter();
   const query1 = router.query.queryid;
 
@@ -53,7 +53,11 @@ export default function UpdateDonation() {
  
   const donorname = data1.Donor;
 
-    
+  const donornames = [];
+  let length1 = (users.users).length;
+  for(let i=0; i< length1;i++){
+      donornames.push(users.users[i].Donor);
+  }
   
   let donordetails = async () => {
     fetch('/api/donorname',{
@@ -179,7 +183,14 @@ export default function UpdateDonation() {
                                     <Form onSubmit={handleSubmit}>
                                         <FormLayout>
                                             <FormLayout columns={[1, null, 2]}>
-                                                <Field name="donor" label="Donor Name" type="text" defaultValue={data1.Donor} required />
+                                                {/* <Field name="donor" label="Donor Name" type="text" defaultValue={data1.Donor} required /> */}
+                                                <Field name="donor" label="Donor Name" type="select"  required defaultValue={data1.Donor} onChange={donordetails}
+                                                  options={donornames.map((Donornames, cid) => (
+                                                    {
+                                                      value: Donornames
+                                                    }
+                                                  ))}
+                                                  />
                                                 <Field name="amount" label="Amount" type="text" defaultValue={data1.Amount}  required/>
                                             </FormLayout>
                                             <FormLayout columns={[1, null, 2]}>
@@ -250,4 +261,13 @@ export default function UpdateDonation() {
       </HStack>
        
     );
+}
+export async function getServerSideProps(context) {
+  const client = await clientPromise;
+  const db = client.db("nextjs-mongodb-demo");
+  let users = await db.collection("donors").find({}).toArray();
+  users = JSON.parse(JSON.stringify(users));
+  return {
+    props: { users },
+  };
 }

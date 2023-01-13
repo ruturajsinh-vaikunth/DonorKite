@@ -21,11 +21,11 @@ export default async function handler(req, res) {
       break;
       case "PUT":
         let bodyObject2 = JSON.parse(req.body);
-        const { Email, Phone, Address, City, State, Country, Zipcode  } = bodyObject2;
+        const { donor, Email, Phone, Address, City, State, Country, Zipcode  } = bodyObject2;
         let newobj1 = await db.collection("donors").updateOne(
           {
             _id: new ObjectId(bodyObject2.id)
-          },{ $set: { Email: Email, Phone: Phone, Address: Address, City: City, State: State, Country: Country, Zipcode: Zipcode }}
+          },{ $set: { Donor: donor, Email: Email, Phone: Phone, Address: Address, City: City, State: State, Country: Country, Zipcode: Zipcode }}
         );
         res.json(newobj1);
         break;
