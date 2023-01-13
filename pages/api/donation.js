@@ -27,12 +27,7 @@ export default async function handler(req, res) {
           _id: new ObjectId(bodyObject2.id)
         },{ $set: { Donor: donor, Amount: amount, Type: type, Fund: fund, Status1: status1, Date: date }}
       );
-      let newobj2 = await db.collection("donors").updateOne(
-        {
-          Donor: donor
-      },{ $set: {Donor: donor}}
-      )
-      res.json(newobj1,newobj2);
+      res.json(newobj1);
       break;
   }
 }

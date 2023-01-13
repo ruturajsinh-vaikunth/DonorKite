@@ -18,8 +18,6 @@ import { getSession } from "next-auth/react";
 
 export default function Dashboard() {
 
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
   // const { status } = useSession({
   //   require: true,
   //   onUnauthenticated(){
@@ -29,18 +27,7 @@ export default function Dashboard() {
   // if(status === "authenticated"){
   //   return 'user not authenticated'
   // }
-  useEffect(() => {
-    getSession().then((session) => {
-      if (session) {
-        router.replace('/');
-      } else {
-        setIsLoading(false);
-      }
-    });
-  }, [router]);
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+
     return(
       <HStack height="100vh" width="100vw" justifyItems="stretch" alignItems="stretch">
           <AppShell variant="static" minH="100%"
@@ -112,17 +99,17 @@ export default function Dashboard() {
     </HStack>
     )
 }
-export async function getServerSideProps(context){
-  const session = await getSession({ req: context.req });
-  if(session){
-    return{
-      redirect: {
-        destination: '/',
-        permanet: false,
-      },
-    };
-  }
-  return{
-    props: {session}
-  }
-}
+// export async function getServerSideProps(context){
+//   const session = await getSession({ req: context.req });
+//   if(session){
+//     return{
+//       redirect: {
+//         destination: '/',
+//         permanet: false,
+//       },
+//     };
+//   }
+//   return{
+//     props: {session}
+//   }
+// }

@@ -184,7 +184,7 @@ export default function UpdateDonation(users) {
                                         <FormLayout>
                                             <FormLayout columns={[1, null, 2]}>
                                                 {/* <Field name="donor" label="Donor Name" type="text" defaultValue={data1.Donor} required /> */}
-                                                <Field name="donor" label="Donor Name" type="select"  required defaultValue={data1.Donor} onChange={donordetails}
+                                                <Field name="donor" label="Donor Name" type="select"  required defaultValue={data1.Donor}
                                                   options={donornames.map((Donornames, cid) => (
                                                     {
                                                       value: Donornames
