@@ -29,10 +29,12 @@ export default async function handler(req, res) {
         );
         let newobj2 = await db.collection("donations").updateOne(
           {
-            Donor: donor
-          },{ $set: { Donor: donor }}
+              Donor_id : new ObjectId(bodyObject2.id)
+          },
+          { $set: { Donor: donor }}
         );
-        res.json(newobj1,newobj2);
+        res.json(newobj1);
+        res.json(newobj2);
         break;
   }
 }
