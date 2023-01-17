@@ -15,7 +15,7 @@ export default async function handler(req, res) {
       res.json({ status: 200, data: donations });
       break;
     case "DELETE":
-      let bodyObject1 = req.body;
+      let bodyObject1 = JSON.parse(req.body);
       let newobj = await db.collection("donors").deleteOne({_id: new ObjectId(bodyObject1.id)});
       res.json(newobj);
       break;
@@ -27,7 +27,12 @@ export default async function handler(req, res) {
             _id: new ObjectId(bodyObject2.id)
           },{ $set: { Donor: donor, Email: Email, Phone: Phone, Address: Address, City: City, State: State, Country: Country, Zipcode: Zipcode }}
         );
-        res.json(newobj1);
+        let newobj2 = await db.collection("donations").updateOne(
+          {
+            Donor: donor
+          },{ $set: { Donor: donor }}
+        );
+        res.json(newobj1,newobj2);
         break;
   }
 }

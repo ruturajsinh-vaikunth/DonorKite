@@ -137,7 +137,7 @@ let onNextpage = (_id) => {
   };
   
   let deleteDonor = async(_id) =>{
-    fetch('/api/donation',{
+    fetch('/api/donor',{
       method: "DELETE",
       body: JSON.stringify({
         id: _id,
