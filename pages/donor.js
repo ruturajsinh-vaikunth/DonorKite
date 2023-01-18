@@ -3,7 +3,7 @@ import { FiHome } from "@react-icons/all-files/fi/FiHome";
 import { FiUser } from "@react-icons/all-files/fi/FiUser";
 import { BiDonateHeart } from "@react-icons/all-files/bi/BiDonateHeart";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
-import { RiRefund2Fill } from "@react-icons/all-files/ri/RiRefund2Fill";
+import { GiCapitol } from "@react-icons/all-files/gi/GiCapitol";
 import { AppShell } from '@saas-ui/app-shell';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -33,12 +33,12 @@ export default function Donor(users) {
       id: 'Country',
       label: 'Country',
       type: 'enum',
-      icon: <RiRefund2Fill />,
+      icon: <GiCapitol />,
       items: [
         {
-          id: 'Tuvalu',
-          label: 'Tuvalu',
-          value: 'Tuvalu',
+          id: 'India',
+          label: 'India',
+          value: 'India',
           icon: <Badge boxSize="8px" borderRadius="full" bg="blue.400" />,
         },
         {
@@ -52,6 +52,12 @@ export default function Donor(users) {
           label: 'United States',
           value: 'United States',
           icon: <Badge boxSize="8px" borderRadius="full" bg="red.400" />,
+        },
+        {
+          id: 'Tuvalu',
+          label: 'Tuvalu',
+          value: 'Tuvalu',
+          icon: <Badge boxSize="8px" borderRadius="full" bg="blue.400" />,
         },
       ],
     },

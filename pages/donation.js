@@ -8,6 +8,7 @@ import { FiHome } from "@react-icons/all-files/fi/FiHome";
 import { FiUser } from "@react-icons/all-files/fi/FiUser";
 import { BiDonateHeart } from "@react-icons/all-files/bi/BiDonateHeart";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
+import { GrStatusGood } from "@react-icons/all-files/gr/GrStatusGood"; 
 import { AppShell } from '@saas-ui/app-shell';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -91,6 +92,26 @@ export default function Donation(users) {
             label: 'Covid Relif Fund',
             value: 'Covid Relif Fund',
             icon:  <Badge boxSize="8px" borderRadius="full" bg="green.400" />,
+          },
+        ],
+      },
+      {
+        id: 'Status1',
+        label: 'Status',
+        type: 'enum',
+        icon: <GrStatusGood />,
+        items: [
+          {
+            id: 'Paid',
+            label: 'Paid',
+            value: 'Paid',
+            icon: <Badge boxSize="8px" borderRadius="full" bg="green.400" />,
+          },
+          {
+            id: 'Unsettled',
+            label: 'Unsettled',
+            value: 'Unsettled',
+            icon:  <Badge boxSize="8px" borderRadius="full" bg="red.400" />,
           },
         ],
       },

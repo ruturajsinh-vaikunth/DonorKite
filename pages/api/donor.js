@@ -34,6 +34,7 @@ export default async function handler(req, res) {
           { $set: { Donor: donor }}
         );
         res.json(newobj2);
+        console.log(newobj2);
         break;
   }
 }
