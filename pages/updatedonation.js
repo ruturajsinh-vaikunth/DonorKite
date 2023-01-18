@@ -56,7 +56,7 @@ export default function UpdateDonation(users) {
   const donornames = [];
   let length1 = (users.users).length;
   for(let i=0; i< length1;i++){
-      donornames.push(users.users[i].Donor);
+    donornames.push({Donorname : (users.users[i].Donor),Donor_id : (users.users[i]._id)});
   }
   
   let donordetails = async () => {
@@ -105,7 +105,8 @@ export default function UpdateDonation(users) {
         method: "PUT",
         body: JSON.stringify({
             id: query1,
-            donor: params.donor,
+            donor_id: params.donor,
+            Donor: params.donor,
             amount: params.amount,
             type: params.type,
             fund: params.fund,
@@ -187,7 +188,8 @@ export default function UpdateDonation(users) {
                                                 <Field name="donor" label="Donor Name" type="select"  required defaultValue={data1.Donor}
                                                   options={donornames.map((Donornames, cid) => (
                                                     {
-                                                      value: Donornames
+                                                      label: Donornames.Donorname,
+                                                      value: Donornames.Donor_id,
                                                     }
                                                   ))}
                                                   />

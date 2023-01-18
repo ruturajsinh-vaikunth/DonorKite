@@ -11,7 +11,6 @@ export default async function handler(req, res) {
         const checkDonor = await db.collection('donors').findOne({ _id: new ObjectId(Donor_id)});
         let myPost = await db.collection("donations").insertOne({Donor: checkDonor.Donor, Amount: Amount, Type: Type, Fund: Fund, Status1: Status1, Date: Date, Donor_id: new ObjectId(Donor_id)});
         res.json(myPost.ops);
-        console.log(myPost);
        break;
     case "GET":
       const donations = await db.collection("donations").find({}).toArray();
@@ -24,11 +23,12 @@ export default async function handler(req, res) {
       break;
     case "PUT":
       let bodyObject2 = JSON.parse(req.body);
-      const { donor, amount, type, fund, status1, date } = bodyObject2;
+      const {donor_id, donor, amount, type, fund, status1, date } = bodyObject2;
+      const checkDonor1 = await db.collection('donors').findOne({ _id: new ObjectId(donor_id)});
       let newobj1 = await db.collection("donations").updateOne(
         {
           _id: new ObjectId(bodyObject2.id)
-        },{ $set: { Donor: donor, Amount: amount, Type: type, Fund: fund, Status1: status1, Date: date }}
+        },{ $set: { Donor: checkDonor1.Donor, Amount: amount, Type: type, Fund: fund, Status1: status1, Date: date, Donor_id: new ObjectId(donor_id) }}
       );
       res.json(newobj1);
       break;
