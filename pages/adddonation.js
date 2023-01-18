@@ -52,11 +52,17 @@ export default function AddDonation(users) {
   //     setType("");
   // }
 
-      
+    
+  const donorname = [];
+    let length1 = (users.users).length;
+    for(let i=0; i< length1;i++){
+        donorname.push({Donorname : (users.users[i].Donor),Donor_id : (users.users[i]._id)});
+    }
     let handleSubmit = async (params) => {
         let res = await fetch("/api/donation", {
         method: "POST",
         body: JSON.stringify({
+            Donor_id: params.donor,
             Donor: params.donor,
             Amount: params.amount,
             Type: params.type,
@@ -73,11 +79,7 @@ export default function AddDonation(users) {
           // setDateValue(today);
     }
 
-    const donorname = [];
-    let length1 = (users.users).length;
-    for(let i=0; i< length1;i++){
-        donorname.push(users.users[i].Donor);
-    }
+    
     
     const setDonor = "Author"
 
@@ -190,7 +192,8 @@ export default function AddDonation(users) {
                                           <Field name="donor" label="Donor Name" type="select"  required placeholder="Select Donor" onChange={donordetails}
                                            options={donorname.map((Donornames, cid) => (
                                             {
-                                              value: Donornames
+                                              label: Donornames.Donorname,
+                                              value: Donornames.Donor_id,
                                             }
                                            ))}
                                           />

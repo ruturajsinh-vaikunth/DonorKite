@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             _id: new ObjectId(bodyObject2.id)
           },{ $set: { Donor: donor, Email: Email, Phone: Phone, Address: Address, City: City, State: State, Country: Country, Zipcode: Zipcode }}
         );
-        let newobj2 = await db.collection("donations").updateOne(
+        let newobj2 = await db.collection("donations").updateMany(
           {
               Donor_id : new ObjectId(bodyObject2.id)
           },

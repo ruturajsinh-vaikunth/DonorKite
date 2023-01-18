@@ -7,8 +7,11 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "POST":
         let bodyObject = JSON.parse(req.body);
-        let myPost = await db.collection("donations").insertOne(bodyObject);
+        const { Donor_id, Donor, Amount, Type, Fund, Status1, Date } = bodyObject;
+        const checkDonor = await db.collection('donors').findOne({ _id: new ObjectId(Donor_id)});
+        let myPost = await db.collection("donations").insertOne({Donor: checkDonor.Donor, Amount: Amount, Type: Type, Fund: Fund, Status1: Status1, Date: Date, Donor_id: new ObjectId(Donor_id)});
         res.json(myPost.ops);
+        console.log(myPost);
        break;
     case "GET":
       const donations = await db.collection("donations").find({}).toArray();
